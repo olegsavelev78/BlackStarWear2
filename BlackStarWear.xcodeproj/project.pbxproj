@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E893DE08E72D90419253051 /* Pods_BlackStarWear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5046936656443E5E3014368C /* Pods_BlackStarWear.framework */; };
+		DE145BD624BE367100660F5C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE145BD424BE367100660F5C /* TableViewCell.swift */; };
+		DE5AD2B124BAD7F900A4819C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD2B024BAD7F900A4819C /* AppDelegate.swift */; };
+		DE5AD2B324BAD7F900A4819C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD2B224BAD7F900A4819C /* SceneDelegate.swift */; };
+		DE5AD2B524BAD7F900A4819C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD2B424BAD7F900A4819C /* ViewController.swift */; };
+		DE5AD2B824BAD7F900A4819C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5AD2B624BAD7F900A4819C /* Main.storyboard */; };
+		DE5AD2BB24BAD7F900A4819C /* BlackStarWear.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD2B924BAD7F900A4819C /* BlackStarWear.xcdatamodeld */; };
+		DE5AD2BD24BAD7FF00A4819C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE5AD2BC24BAD7FF00A4819C /* Assets.xcassets */; };
+		DE5AD2C024BAD7FF00A4819C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5AD2BE24BAD7FF00A4819C /* LaunchScreen.storyboard */; };
+		DE5AD2C824BD8F7D00A4819C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD2C724BD8F7D00A4819C /* Category.swift */; };
+		DE5AD2CA24BE1D1700A4819C /* Pars.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5AD2C924BE1D1700A4819C /* Pars.swift */; };
+		DE889BE025AD39860050630F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE889BDF25AD39860050630F /* Product.swift */; };
+		DE889BE725B3081D0050630F /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE889BE625B3081D0050630F /* ProductViewController.swift */; };
+		DE889BEF25B328950050630F /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE889BEE25B328940050630F /* ProductCollectionViewCell.swift */; };
+		E75FCEF325D91C6100658534 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75FCEF225D91C6100658534 /* CartViewController.swift */; };
+		E7981C7425E3BC4C00C4C060 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7981C7325E3BC4C00C4C060 /* Images.swift */; };
+		E7ADAF0A25ED4D4400458EAD /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ADAF0925ED4D4400458EAD /* Slide.swift */; };
+		E7ADAF0D25ED4D8300458EAD /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7ADAF0C25ED4D8300458EAD /* Slide.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		22923B93181889CFDFBBE38D /* Pods-BlackStarWear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackStarWear.release.xcconfig"; path = "Target Support Files/Pods-BlackStarWear/Pods-BlackStarWear.release.xcconfig"; sourceTree = "<group>"; };
+		5046936656443E5E3014368C /* Pods_BlackStarWear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlackStarWear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B89F2021CDC9CCB45D2D1AFD /* Pods-BlackStarWear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackStarWear.debug.xcconfig"; path = "Target Support Files/Pods-BlackStarWear/Pods-BlackStarWear.debug.xcconfig"; sourceTree = "<group>"; };
+		DE145BD424BE367100660F5C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		DE5AD2AD24BAD7F900A4819C /* BlackStarWear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackStarWear.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE5AD2B024BAD7F900A4819C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DE5AD2B224BAD7F900A4819C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DE5AD2B424BAD7F900A4819C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE5AD2B724BAD7F900A4819C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE5AD2BA24BAD7F900A4819C /* BlackStarWear.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlackStarWear.xcdatamodel; sourceTree = "<group>"; };
+		DE5AD2BC24BAD7FF00A4819C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DE5AD2BF24BAD7FF00A4819C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DE5AD2C124BAD7FF00A4819C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE5AD2C724BD8F7D00A4819C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		DE5AD2C924BE1D1700A4819C /* Pars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pars.swift; sourceTree = "<group>"; };
+		DE889BDF25AD39860050630F /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		DE889BE625B3081D0050630F /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		DE889BEE25B328940050630F /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		E75FCEF225D91C6100658534 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		E7981C7325E3BC4C00C4C060 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		E7ADAF0925ED4D4400458EAD /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
+		E7ADAF0C25ED4D8300458EAD /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE5AD2AA24BAD7F900A4819C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E893DE08E72D90419253051 /* Pods_BlackStarWear.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		326F5471AFD3CF1812856A72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5046936656443E5E3014368C /* Pods_BlackStarWear.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95C3ED4521E2BBC637E427B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B89F2021CDC9CCB45D2D1AFD /* Pods-BlackStarWear.debug.xcconfig */,
+				22923B93181889CFDFBBE38D /* Pods-BlackStarWear.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DE3A4EFA24D893C000B35DF3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DE5AD2B424BAD7F900A4819C /* ViewController.swift */,
+				DE145BD424BE367100660F5C /* TableViewCell.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		DE5AD2A424BAD7F900A4819C = {
+			isa = PBXGroup;
+			children = (
+				DE5AD2AF24BAD7F900A4819C /* BlackStarWear */,
+				95C3ED4521E2BBC637E427B4 /* Pods */,
+				326F5471AFD3CF1812856A72 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DE5AD2AE24BAD7F900A4819C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE5AD2AD24BAD7F900A4819C /* BlackStarWear.app */,
+				DE889BE625B3081D0050630F /* ProductViewController.swift */,
+				DE889BEE25B328940050630F /* ProductCollectionViewCell.swift */,
+			);
+			name = Products;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		DE5AD2AF24BAD7F900A4819C /* BlackStarWear */ = {
+			isa = PBXGroup;
+			children = (
+				DE5AD2B024BAD7F900A4819C /* AppDelegate.swift */,
+				DE5AD2B224BAD7F900A4819C /* SceneDelegate.swift */,
+				DE5AD2B624BAD7F900A4819C /* Main.storyboard */,
+				DE3A4EFA24D893C000B35DF3 /* Categories */,
+				DE5AD2AE24BAD7F900A4819C /* Products */,
+				E7981C7225E3BC0E00C4C060 /* Cart Product */,
+				DE5AD2CB24BE22FB00A4819C /* Parsing */,
+				DE5AD2BC24BAD7FF00A4819C /* Assets.xcassets */,
+				DE5AD2BE24BAD7FF00A4819C /* LaunchScreen.storyboard */,
+				DE5AD2C124BAD7FF00A4819C /* Info.plist */,
+				DE5AD2B924BAD7F900A4819C /* BlackStarWear.xcdatamodeld */,
+			);
+			path = BlackStarWear;
+			sourceTree = "<group>";
+		};
+		DE5AD2CB24BE22FB00A4819C /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				DE5AD2C924BE1D1700A4819C /* Pars.swift */,
+				DE5AD2C724BD8F7D00A4819C /* Category.swift */,
+				DE889BDF25AD39860050630F /* Product.swift */,
+			);
+			name = Parsing;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		E7981C7225E3BC0E00C4C060 /* Cart Product */ = {
+			isa = PBXGroup;
+			children = (
+				E75FCEF225D91C6100658534 /* CartViewController.swift */,
+				E7981C7325E3BC4C00C4C060 /* Images.swift */,
+				E7ADAF0925ED4D4400458EAD /* Slide.swift */,
+				E7ADAF0C25ED4D8300458EAD /* Slide.xib */,
+			);
+			path = "Cart Product";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE5AD2AC24BAD7F900A4819C /* BlackStarWear */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE5AD2C424BAD7FF00A4819C /* Build configuration list for PBXNativeTarget "BlackStarWear" */;
+			buildPhases = (
+				2CDF25CC73140550AD0D34F8 /* [CP] Check Pods Manifest.lock */,
+				DE5AD2A924BAD7F900A4819C /* Sources */,
+				DE5AD2AA24BAD7F900A4819C /* Frameworks */,
+				DE5AD2AB24BAD7F900A4819C /* Resources */,
+				3ACAFA095139113BD8A9653F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlackStarWear;
+			productName = BlackStarWear;
+			productReference = DE5AD2AD24BAD7F900A4819C /* BlackStarWear.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE5AD2A524BAD7F900A4819C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1230;
+				ORGANIZATIONNAME = Oleg;
+				TargetAttributes = {
+					DE5AD2AC24BAD7F900A4819C = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = DE5AD2A824BAD7F900A4819C /* Build configuration list for PBXProject "BlackStarWear" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE5AD2A424BAD7F900A4819C;
+			productRefGroup = DE5AD2AE24BAD7F900A4819C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE5AD2AC24BAD7F900A4819C /* BlackStarWear */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE5AD2AB24BAD7F900A4819C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE5AD2C024BAD7FF00A4819C /* LaunchScreen.storyboard in Resources */,
+				DE5AD2BD24BAD7FF00A4819C /* Assets.xcassets in Resources */,
+				DE5AD2B824BAD7F900A4819C /* Main.storyboard in Resources */,
+				E7ADAF0D25ED4D8300458EAD /* Slide.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2CDF25CC73140550AD0D34F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BlackStarWear-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3ACAFA095139113BD8A9653F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlackStarWear/Pods-BlackStarWear-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlackStarWear/Pods-BlackStarWear-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlackStarWear/Pods-BlackStarWear-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE5AD2A924BAD7F900A4819C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE5AD2BB24BAD7F900A4819C /* BlackStarWear.xcdatamodeld in Sources */,
+				E7981C7425E3BC4C00C4C060 /* Images.swift in Sources */,
+				DE889BE025AD39860050630F /* Product.swift in Sources */,
+				DE889BEF25B328950050630F /* ProductCollectionViewCell.swift in Sources */,
+				DE5AD2CA24BE1D1700A4819C /* Pars.swift in Sources */,
+				DE5AD2C824BD8F7D00A4819C /* Category.swift in Sources */,
+				DE5AD2B524BAD7F900A4819C /* ViewController.swift in Sources */,
+				DE5AD2B124BAD7F900A4819C /* AppDelegate.swift in Sources */,
+				E7ADAF0A25ED4D4400458EAD /* Slide.swift in Sources */,
+				E75FCEF325D91C6100658534 /* CartViewController.swift in Sources */,
+				DE889BE725B3081D0050630F /* ProductViewController.swift in Sources */,
+				DE145BD624BE367100660F5C /* TableViewCell.swift in Sources */,
+				DE5AD2B324BAD7F900A4819C /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DE5AD2B624BAD7F900A4819C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE5AD2B724BAD7F900A4819C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DE5AD2BE24BAD7FF00A4819C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE5AD2BF24BAD7FF00A4819C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE5AD2C224BAD7FF00A4819C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DE5AD2C324BAD7FF00A4819C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE5AD2C524BAD7FF00A4819C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B89F2021CDC9CCB45D2D1AFD /* Pods-BlackStarWear.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RKG3CKHF53;
+				INFOPLIST_FILE = BlackStarWear/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oleg.BlackStarWear;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DE5AD2C624BAD7FF00A4819C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22923B93181889CFDFBBE38D /* Pods-BlackStarWear.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RKG3CKHF53;
+				INFOPLIST_FILE = BlackStarWear/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oleg.BlackStarWear;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE5AD2A824BAD7F900A4819C /* Build configuration list for PBXProject "BlackStarWear" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE5AD2C224BAD7FF00A4819C /* Debug */,
+				DE5AD2C324BAD7FF00A4819C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE5AD2C424BAD7FF00A4819C /* Build configuration list for PBXNativeTarget "BlackStarWear" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE5AD2C524BAD7FF00A4819C /* Debug */,
+				DE5AD2C624BAD7FF00A4819C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DE5AD2B924BAD7F900A4819C /* BlackStarWear.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DE5AD2BA24BAD7F900A4819C /* BlackStarWear.xcdatamodel */,
+			);
+			currentVersion = DE5AD2BA24BAD7F900A4819C /* BlackStarWear.xcdatamodel */;
+			path = BlackStarWear.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DE5AD2A524BAD7F900A4819C /* Project object */;
+}
