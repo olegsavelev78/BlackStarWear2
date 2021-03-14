@@ -5,16 +5,19 @@ class Product {
     let mainImage: String
     let price: String
     var description: String
+    let colorName: String
     var productImages: [String]
     var offers: [Offers]
 
     init?(data: NSDictionary){
         guard let name = data["name"] as? String,
+              let colorName = data["colorName"] as? String,
               let description = data["description"] as? String,
               let offersData = data["offers"] as? [NSDictionary],
               let mainImage = data["mainImage"] as? String,
               let price = data["price"] as? String else {return nil}
         self.name = name
+        self.colorName = colorName
         self.mainImage = mainImage
         self.price = price
         self.description = description
@@ -40,7 +43,9 @@ class Product {
         self.description = ""
         self.offers = []
         self.productImages = []
+        self.colorName = ""
         }
+
 }
 
 class Offers {

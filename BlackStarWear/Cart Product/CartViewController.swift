@@ -5,107 +5,131 @@
 //  Created by Олег Савельев on 14.02.2021.
 //  Copyright © 2021 Oleg. All rights reserved.
 //
-// 1. Настроить загрузку картинок в скроллвью вместе с pagecontroll
-// 2. добавить корзину
-// 3. сделать алерт для выбора размеров
+//
+// 3. сделать алерт для выбора размеров. Установить таблицу в алерт, сделать ячейки (либо xib, либо код)
+// 4. Cделать сохранение в реалм
+//
 
 import UIKit
+import Kingfisher
+import RealmSwift
 
-class CartViewController: UIViewController, UIScrollViewDelegate {
-    
+class CartViewController: UIViewController {
+//    let realm = try! Realm()
     let productUrl = "https://blackstarshop.ru/"
     var product = Product()
-    var slides: [Slide] = []
+    var tableViewOffers = UITableView(frame: CGRect(x: 0, y: 0, width: 365, height: 170))
+    var selectRow = -1
 
-    @IBOutlet weak var basketButton: UIBarButtonItem!
+    
     @IBAction func basketButton(_ sender: Any) {
+        performSegue(withIdentifier: "showBasket", sender: self)
+        
     }
     
-    
+    @IBOutlet weak var imageCollectoinView: UICollectionView!
     @IBOutlet weak var imgPageControl: UIPageControl!
-    @IBOutlet weak var imagesScrollView: UIScrollView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var costLabel1: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var addToButton: UIButton!
     @IBAction func addToButton(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Выберите размер", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: .actionSheet)
+        let done = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        
+        alert.view.addSubview(tableViewOffers)
+            alert.addAction(done)
+            present(alert, animated: true, completion: nil)
+//        }
+
+        
     }
-    func createSlides() -> [Slide] {
-        
-        var slideArray = [Slide]()
-        
-        for i in 0...product.productImages.count-1 {
-            var productIndex = i
-            let slide: Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-            let stringImgUrl = productUrl + product.productImages[productIndex]
-            let imgUrl: URL = URL(string: stringImgUrl)!
-            if let data = NSData(contentsOf: imgUrl){
-                slide.image.image = UIImage(data: data as Data)
-                productIndex += 1
-                slide.image.contentMode = .scaleAspectFill
-            }
-
-            slideArray.append(slide)
-        }
-        return slideArray
-        }
-
-    func setupSlideScrollView(slides : [Slide]) {
-        imagesScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        imagesScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
-        imagesScrollView.isPagingEnabled = true
-            
-            for i in 0 ..< slides.count {
-                slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
-                imagesScrollView.addSubview(slides[i])
-            }
-        }
+    @IBOutlet weak var descriptionTextView: UITextView!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        slides = createSlides()
-        setupSlideScrollView(slides: slides)
-        imgPageControl.numberOfPages = slides.count
-        imgPageControl.currentPage = 0
-        view.bringSubviewToFront(imgPageControl)
-        self.imagesScrollView.delegate = self
-        
-        
-//        let image = UIImage(named: "basket3")
-//        self.basketButton.image = image
         navigationBarSetting()
         self.addToButton.setTitle("ДОБАВИТЬ В КОРЗИНУ", for: .normal)
+        self.addToButton.layer.cornerRadius = 8
         self.costLabel1.text = "Стоимость:"
         self.nameLabel.text = product.name
-        self.descriptionLabel.text = product.description
+        self.descriptionTextView.text = product.description
         self.costLabel.text = String(product.price.split(separator: ".")[0] + " ₽")
-        self.addToButton.layer.cornerRadius = 8
         
+        tableViewOffers.dataSource = self
+        tableViewOffers.delegate = self
+        tableViewOffers.register(UINib(nibName: "Test", bundle: nil), forCellReuseIdentifier: "cellOffers")
     }
-    
+
     func navigationBarSetting() {
         self.navigationController?.navigationBar.tintColor = .black
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = UIColor.clear
-        
-//        let imageView = UIImageView(frame: CGRect(x: 20, y: 0, width: 40, height: 40))
-//        imageView.image = image
-//        self.navigationController?.navigationBar.addSubview(imageView)
+    }
+}
+
+extension CartViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let w = UIScreen.main.bounds.width
+        let h = view.frame.height
+        return CGSize(width: w, height: h)
+    }
     
-        
-//        let rightButton = UIBarButtonItem()
-//        rightButton.width = CGFloat(40)
-//        rightButton.image = image
-//        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        imgPageControl.numberOfPages = product.productImages.count
+        return product.productImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCartCell", for: indexPath) as! ImageCell
+        cell.initImage(item: product, index: indexPath.row)
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offSet = imageCollectoinView.contentOffset.x
+        let width = imageCollectoinView.frame.width
+        let horizontalCenter = width / 2
+
+        imgPageControl.currentPage = Int(offSet + horizontalCenter) / Int(width)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.navigationItem.backBarButtonItem?.title = "Назад"
+    }
+}
+extension CartViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return product.offers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellOffers", for: indexPath) as! SizeTableViewCell
+//        cell.accessoryType = .checkmark
+        cell.colorLabel.text = product.colorName
+        cell.sizeLabel.text = product.offers[indexPath.row].size
+        cell.quantityLabel.text = product.offers[indexPath.row].quantity
+        return cell
         
     }
-
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellOffers", for: indexPath) as! SizeTableViewCell
+        let item = ProductData()
+//        item.size = product.offers[indexPath.row].size
+//        item.colorName = product.colorName
+//        item.quantity = product.offers[indexPath.row].quantity
+//        item.mainImage = product.mainImage
+        
+        Persistance.shared.save(item: item)
+    }
     
-
-
+    
 }
