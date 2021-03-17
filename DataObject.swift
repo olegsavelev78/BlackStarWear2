@@ -7,13 +7,7 @@ class ProductData: Object {
     @objc dynamic var size = ""
     @objc dynamic var quantity = ""
     @objc dynamic var mainImage = ""
-    func getData(name: String, colorName: String, size: String, quantity: String, mainImage: String) {
-        self.name = name
-        self.colorName = colorName
-        self.size = size
-        self.quantity = quantity
-        self.mainImage = mainImage
-    }
+    @objc dynamic var price = ""
 }
 
 class Persistance {
@@ -24,10 +18,6 @@ class Persistance {
         try! realm.write {
             realm.add(item)
         }
-    }
-    
-    func dataTake() -> Results<ProductData>{
-        realm.objects(ProductData.self)
     }
     
 }

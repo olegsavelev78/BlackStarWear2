@@ -4,11 +4,7 @@
 //
 //  Created by Олег Савельев on 14.02.2021.
 //  Copyright © 2021 Oleg. All rights reserved.
-//
-//
-// 3. сделать алерт для выбора размеров. Установить таблицу в алерт, сделать ячейки (либо xib, либо код)
-// 4. Cделать сохранение в реалм
-//
+
 
 import UIKit
 import Kingfisher
@@ -18,7 +14,7 @@ class CartViewController: UIViewController {
 //    let realm = try! Realm()
     let productUrl = "https://blackstarshop.ru/"
     var product = Product()
-    var tableViewOffers = UITableView(frame: CGRect(x: 0, y: 0, width: 365, height: 170))
+    var tableViewOffers = UITableView(frame: CGRect(x: 0, y: 50, width: 200, height: 170))
     var selectRow = -1
 
     
@@ -34,23 +30,21 @@ class CartViewController: UIViewController {
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var addToButton: UIButton!
     @IBAction func addToButton(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "Выберите размер", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: .actionSheet)
-        let done = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
-        
-        alert.view.addSubview(tableViewOffers)
-            alert.addAction(done)
-            present(alert, animated: true, completion: nil)
-//        }
-
-        
+        performSegue(withIdentifier: "Size", sender: self)
+    
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Size", let destination = segue.destination as? ModalViewController {
+            let productSelect = product
+            destination.product = productSelect
+        }
     }
     @IBOutlet weak var descriptionTextView: UITextView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         navigationBarSetting()
         self.addToButton.setTitle("ДОБАВИТЬ В КОРЗИНУ", for: .normal)
@@ -59,11 +53,9 @@ class CartViewController: UIViewController {
         self.nameLabel.text = product.name
         self.descriptionTextView.text = product.description
         self.costLabel.text = String(product.price.split(separator: ".")[0] + " ₽")
-        
-        tableViewOffers.dataSource = self
-        tableViewOffers.delegate = self
-        tableViewOffers.register(UINib(nibName: "Test", bundle: nil), forCellReuseIdentifier: "cellOffers")
+ 
     }
+ 
 
     func navigationBarSetting() {
         self.navigationController?.navigationBar.tintColor = .black
@@ -102,34 +94,6 @@ extension CartViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         imgPageControl.currentPage = Int(offSet + horizontalCenter) / Int(width)
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        self.navigationItem.backBarButtonItem?.title = "Назад"
-    }
+
 }
-extension CartViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return product.offers.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellOffers", for: indexPath) as! SizeTableViewCell
-//        cell.accessoryType = .checkmark
-        cell.colorLabel.text = product.colorName
-        cell.sizeLabel.text = product.offers[indexPath.row].size
-        cell.quantityLabel.text = product.offers[indexPath.row].quantity
-        return cell
-        
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellOffers", for: indexPath) as! SizeTableViewCell
-        let item = ProductData()
-//        item.size = product.offers[indexPath.row].size
-//        item.colorName = product.colorName
-//        item.quantity = product.offers[indexPath.row].quantity
-//        item.mainImage = product.mainImage
-        
-        Persistance.shared.save(item: item)
-    }
-    
-    
-}
+

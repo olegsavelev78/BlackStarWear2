@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.tableFooterView = UIView()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
