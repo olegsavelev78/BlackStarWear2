@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 class CategoryCell: UITableViewCell {
-    let categoriesUrl = "https://blackstarshop.ru/"
+    
 
     @IBOutlet weak var imageCell: UIImageView!
     
@@ -22,13 +22,13 @@ class CategoryCell: UITableViewCell {
     }
     
     func initCell(item: Category){
-        let url = URL(string: categoriesUrl + item.image)
+        let url = URL(string: GetUrl.shared.getImage() + item.image)
         self.imageCell.kf.setImage(with: url)
         textLabelCell.text = item.name
     }
     
     func initCell2(item: Subcategory){
-        let url = URL(string: "https://blackstarwear.ru/" + item.iconImage)
+        let url = URL(string: GetUrl.shared.getImage() + item.iconImage)
         self.imageCell.kf.setImage(with: url)
         textLabelCell.text = item.name
         

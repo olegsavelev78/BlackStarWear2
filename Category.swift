@@ -11,18 +11,19 @@ class Category{
             let image = data["image"] as? String,
             let iconImage = data["iconImage"] as? String,
             let iconImageActive = data["iconImageActive"] as? String,
-            let subcategoriesData = data["subcategories"] as? [NSDictionary] else { return nil }
+            let subcategories = data["subcategories"] as? [NSDictionary] else { return nil }
+        var subcat = [Subcategory]()
+        for data in subcategories {
+            if let sub = Subcategory(data: data){
+                subcat.append(sub)
+            }
+        }
         self.name = name
         self.sortOrder = Int(sortOrder) ?? 0
         self.image = image
         self.iconImage = iconImage
         self.iconImageActive = iconImageActive
-        self.subcategories = []
-        for data in subcategoriesData {
-            if let sub = Subcategory(data: data){
-                self.subcategories.append(sub)
-            }
-        }
+        self.subcategories = subcat
     }
 }
 

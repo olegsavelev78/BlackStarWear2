@@ -28,6 +28,7 @@
 		E7E1B26225FFE6130055F12A /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1B26125FFE6120055F12A /* ModalViewController.swift */; };
 		E7E1B26526011D470055F12A /* Size2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1B26426011D470055F12A /* Size2TableViewCell.swift */; };
 		E7E1B276260134AE0055F12A /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1B275260134AE0055F12A /* BasketTableViewCell.swift */; };
+		E7E1B27A26028B440055F12A /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E1B27926028B430055F12A /* URL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		E7E1B26125FFE6120055F12A /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		E7E1B26426011D470055F12A /* Size2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size2TableViewCell.swift; sourceTree = "<group>"; };
 		E7E1B275260134AE0055F12A /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
+		E7E1B27926028B430055F12A /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				DE5AD2B024BAD7F900A4819C /* AppDelegate.swift */,
 				DE5AD2B224BAD7F900A4819C /* SceneDelegate.swift */,
+				E7E1B27926028B430055F12A /* URL.swift */,
 				DE5AD2B624BAD7F900A4819C /* Main.storyboard */,
 				DE3A4EFA24D893C000B35DF3 /* Categories */,
 				DE5AD2AE24BAD7F900A4819C /* Products */,
@@ -294,6 +297,7 @@
 				E7E1B20B25F7CEAB0055F12A /* ImageCell.swift in Sources */,
 				DE5AD2B524BAD7F900A4819C /* ViewController.swift in Sources */,
 				DE5AD2B124BAD7F900A4819C /* AppDelegate.swift in Sources */,
+				E7E1B27A26028B440055F12A /* URL.swift in Sources */,
 				E75FCEF325D91C6100658534 /* CartViewController.swift in Sources */,
 				E7E1B21725F812EA0055F12A /* BasketViewController.swift in Sources */,
 				DE889BE725B3081D0050630F /* ProductViewController.swift in Sources */,

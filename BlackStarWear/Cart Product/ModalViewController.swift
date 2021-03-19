@@ -10,9 +10,7 @@ import UIKit
 import RealmSwift
 
 class ModalViewController: UIViewController {
-    var arrayProductInBasket: Results<ProductData>!
     var product = Product()
-    let realm = try! Realm()
     
     @IBOutlet weak var sizeTableView: UITableView!
     
@@ -24,7 +22,6 @@ class ModalViewController: UIViewController {
         sizeTableView.delegate = self
         sizeTableView.dataSource = self
         
-        self.arrayProductInBasket = realm.objects(ProductData.self)
     }
 
 
@@ -47,17 +44,27 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellOffers", for: indexPath) as! Size2TableViewCell
-        cell.accessoryType = .checkmark
+        
         let item = ProductData()
-        item.name = product.name
-        item.size = product.offers[indexPath.row].size
-        item.colorName = product.colorName
-        item.quantity = product.offers[indexPath.row].quantity
-        item.mainImage = product.mainImage
-        item.price = product.price
-    
-        Persistance.shared.save(item: item)
+        let array1 = Persistance.shared.getItems()
+        if array1.isEmpty {
+            item.productOfferID = Int(product.offers[indexPath.row].productOfferID)!
+            item.name = product.name
+            item.size = product.offers[indexPath.row].size
+            item.colorName = product.colorName
+            item.quantity = product.offers[indexPath.row].quantity
+            item.mainImage = product.mainImage
+            item.price = product.price
+            Persistance.shared.save(item: item)
+        } else {
+            if array1[indexPath.row].count >= 1{
+                
+                Persistance.shared.countProduct()
+            }
+        }
+
+       
+        
         dismiss(animated: true, completion: nil)
     }
     

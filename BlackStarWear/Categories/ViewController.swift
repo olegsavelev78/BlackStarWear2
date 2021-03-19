@@ -16,6 +16,10 @@ class ViewController: UIViewController {
     var titleName = ""
     
     @IBOutlet weak var tableView: UITableView!
+    @IBAction func basketButton(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "BasketController")
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
     @IBOutlet weak var backButton: UIButton!
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -65,7 +69,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             cell.initCell(item: categories[indexPath.row]) // инициализация ячейки Категорий
             return cell
         } else {
-            cell.initCell2(item: subcategories[indexPath.row]) // инициализация ячейки Подкатегорий
+            if subcategories.isEmpty{
+                
+            } else{
+                cell.initCell2(item: subcategories[indexPath.row]) // инициализация ячейки Подкатегорий
+            }
+            
             return cell
         }
     }

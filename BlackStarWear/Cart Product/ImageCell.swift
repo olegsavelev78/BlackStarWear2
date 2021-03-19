@@ -15,7 +15,7 @@ class ImageCell: UICollectionViewCell {
     
     func initImage(item: Product, index: Int){
         
-        let url = URL(string: "https://blackstarshop.ru/" + item.productImages[index])
+        let url = URL(string: GetUrl.shared.getImage() + item.productImages[index])
         imageCartCell.kf.setImage(with: url)
 
     }

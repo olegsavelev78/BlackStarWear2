@@ -10,7 +10,6 @@ import UIKit
 import Kingfisher
 
 class ProductCollectionViewCell: UICollectionViewCell {
-    let productUrl = "https://blackstarshop.ru/"
     
     @IBOutlet weak var mainImageProduct: UIImageView!
     @IBOutlet weak var priceProduct: UILabel!
@@ -20,7 +19,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     
     func initCollectionCell(item: Product){
-        let url = URL(string: productUrl + item.mainImage)
+        let url = URL(string: GetUrl.shared.getImage() + item.mainImage)
         mainImageProduct.kf.setImage(with: url)
         priceProduct.text = String(item.price.split(separator: ".")[0] + " ₽")
         nameProduct.text = item.name

@@ -7,7 +7,6 @@
 
 
 import UIKit
-import RealmSwift
 import Kingfisher
 
 class BasketViewController: UIViewController {
@@ -21,14 +20,17 @@ class BasketViewController: UIViewController {
         }
     }
     
-    var arrayProductInBasket: Results<ProductData>!
-    var realm = try! Realm()
+    var arrayProductInBasket = Persistance.shared.getItems(){
+        didSet{
+            basketTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Корзина"
-        self.arrayProductInBasket = realm.objects(ProductData.self)
+       
         self.basketButton.setTitle("На главную", for: .normal)
         if !arrayProductInBasket.isEmpty {
             self.basketButton.setTitle("Оформить заказ", for: .normal)
@@ -51,15 +53,20 @@ class BasketViewController: UIViewController {
 }
 extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return arrayProductInBasket.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = basketTableView.dequeueReusableCell(withIdentifier: "product") as! BasketTableViewCell
-        let product = arrayProductInBasket[indexPath.row]
-        cell.initCell(item: product)
         
+        let product = arrayProductInBasket[indexPath.row]
+        print(product.count)
+        
+        
+        cell.initCell(item: product)
+        print(product)
+
         return cell
     }
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -67,10 +74,9 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            try! self.realm.write{
-                self.realm.delete(arrayProductInBasket[indexPath.row])
-            }
+            Persistance.shared.remove(index: indexPath.row)
             basketTableView.deleteRows(at: [indexPath], with: .left)
+            basketTableView.reloadData()
             sumProducts()
             if arrayProductInBasket.isEmpty {
                 self.basketButton.setTitle("На главную", for: .normal)

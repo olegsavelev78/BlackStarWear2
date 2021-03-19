@@ -7,6 +7,10 @@ class ProductViewController: UIViewController {
     var productIndex = 0
     @IBOutlet weak var collectionViewProduct: UICollectionView!
     
+    @IBAction func basketButton(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "BasketController")
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = .black

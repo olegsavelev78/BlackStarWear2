@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4UB-PD-AwE">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellOne" rowHeight="80" id="Mk4-Zb-wSZ" customClass="CategoryCell" customModule="BlackStarWear" customModuleProvider="target">
@@ -92,11 +92,22 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" id="XZV-qz-tMa">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AEb-3n-cHW">
+                                <rect key="frame" x="354" y="2" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="pngegg"/>
+                                <connections>
+                                    <action selector="basketButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U6C-im-4cz"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="jYc-E7-aLU" id="lNv-zH-i8y"/>
                         <outlet property="tableView" destination="4UB-PD-AwE" id="cez-QB-wRb"/>
                         <segue destination="z3n-Gy-DT1" kind="show" identifier="ShowProducts" id="sPp-a3-lng"/>
+                        <segue destination="YJn-4B-tEq" kind="show" identifier="showBasket" id="pmS-C1-Hgy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -112,7 +123,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="X8j-9m-3zm">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Vaj-Ba-7ry">
                                     <size key="itemSize" width="190" height="250"/>
@@ -201,8 +212,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dR0-pH-jUz">
-                        <barButtonItem key="backBarButtonItem" title="Item" id="Svw-Fb-E0F">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" id="W5i-6t-g1v">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="9Io-Vz-kmd">
+                                <rect key="frame" x="354" y="2" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="pngegg"/>
+                                <connections>
+                                    <action selector="basketButton:" destination="z3n-Gy-DT1" eventType="touchUpInside" id="6eY-uc-69X"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -212,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpv-2V-EFO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2746" y="118"/>
+            <point key="canvasLocation" x="2744.9275362318845" y="117.85714285714285"/>
         </scene>
         <!--Cart View Controller-->
         <scene sceneID="npe-tH-mJp">
@@ -385,11 +403,11 @@
             <objects>
                 <viewController modalPresentationStyle="overCurrentContext" id="LSD-7Y-FP2" customClass="ModalViewController" customModule="BlackStarWear" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NzY-m3-49r">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="3fF-I1-7gf">
-                                <rect key="frame" x="0.0" y="482" width="414" height="360"/>
+                                <rect key="frame" x="0.0" y="536" width="414" height="360"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="360" id="nnD-oG-kp6"/>
                                 </constraints>
@@ -456,7 +474,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mvJ-PP-zav">
-                                <rect key="frame" x="0.0" y="44" width="414" height="667"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="667" id="tvs-5O-oYg"/>
@@ -477,7 +495,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXW-0N-XOo">
-                                                    <rect key="frame" x="150" y="16" width="250" height="14.5"/>
+                                                    <rect key="frame" x="150" y="16" width="250" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="Ix1-fx-BBb"/>
                                                     </constraints>
@@ -512,9 +530,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2V9-HU-qal">
+                                                    <rect key="frame" x="362" y="55.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="zsH-aZ-OVB" secondAttribute="trailing" constant="20" symbolic="YES" id="0Nc-d6-hvd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2V9-HU-qal" secondAttribute="bottom" constant="45" id="1T7-f8-nac"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="UQ6-8L-upJ" secondAttribute="bottom" constant="5" id="2Z5-6i-o7u"/>
                                                 <constraint firstItem="gXW-0N-XOo" firstAttribute="leading" secondItem="UQ6-8L-upJ" secondAttribute="trailing" constant="25" id="2aP-LK-0JZ"/>
                                                 <constraint firstItem="UQ6-8L-upJ" firstAttribute="top" secondItem="8bZ-9v-x4E" secondAttribute="topMargin" constant="5" id="6Io-hk-P8k"/>
@@ -524,10 +549,13 @@
                                                 <constraint firstItem="XvQ-iz-jca" firstAttribute="leading" secondItem="UQ6-8L-upJ" secondAttribute="trailing" constant="25" id="HYC-r2-Fkc"/>
                                                 <constraint firstItem="z1D-bc-t1N" firstAttribute="top" secondItem="XvQ-iz-jca" secondAttribute="bottom" constant="10" id="OQ1-oy-jFv"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="z1D-bc-t1N" secondAttribute="bottom" constant="5.5" id="Rgt-73-Yr2"/>
+                                                <constraint firstItem="2V9-HU-qal" firstAttribute="trailing" secondItem="8bZ-9v-x4E" secondAttribute="trailingMargin" constant="10" id="S6U-00-KOf"/>
                                                 <constraint firstItem="UQ6-8L-upJ" firstAttribute="leading" secondItem="8bZ-9v-x4E" secondAttribute="leadingMargin" constant="5" id="VbM-lS-66d"/>
+                                                <constraint firstItem="2V9-HU-qal" firstAttribute="centerY" secondItem="UQ6-8L-upJ" secondAttribute="centerY" id="jTU-Jj-OzY"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XvQ-iz-jca" secondAttribute="trailing" constant="20" symbolic="YES" id="kFo-rt-OF7"/>
                                                 <constraint firstAttribute="trailing" secondItem="gXW-0N-XOo" secondAttribute="trailing" constant="14" id="nBT-y6-8UI"/>
                                                 <constraint firstItem="z1D-bc-t1N" firstAttribute="leading" secondItem="UQ6-8L-upJ" secondAttribute="trailing" constant="25" id="o1M-3S-bdp"/>
+                                                <constraint firstItem="2V9-HU-qal" firstAttribute="top" secondItem="gXW-0N-XOo" secondAttribute="bottom" constant="24.5" id="rCC-Ai-ZKO"/>
                                                 <constraint firstItem="gXW-0N-XOo" firstAttribute="top" secondItem="8bZ-9v-x4E" secondAttribute="topMargin" constant="5" id="v6m-ca-TCO"/>
                                                 <constraint firstItem="XvQ-iz-jca" firstAttribute="top" secondItem="zsH-aZ-OVB" secondAttribute="bottom" constant="10" id="zSW-xS-6wx"/>
                                             </constraints>
@@ -535,6 +563,7 @@
                                         <connections>
                                             <outlet property="colorLabel" destination="XvQ-iz-jca" id="PyO-d5-DKd"/>
                                             <outlet property="costLabel" destination="z1D-bc-t1N" id="jan-Bv-aAn"/>
+                                            <outlet property="countLabel" destination="2V9-HU-qal" id="OxS-Wh-u7g"/>
                                             <outlet property="nameLabel" destination="gXW-0N-XOo" id="YE7-BK-arm"/>
                                             <outlet property="productImageView" destination="UQ6-8L-upJ" id="cDu-2X-B7U"/>
                                             <outlet property="sizeLabel" destination="zsH-aZ-OVB" id="IPM-ef-ZiT"/>
@@ -590,6 +619,7 @@
                         <constraints>
                             <constraint firstItem="qPw-ed-3lE" firstAttribute="leading" secondItem="S0m-wz-lPk" secondAttribute="leadingMargin" id="1sN-rA-qQC"/>
                             <constraint firstItem="mvJ-PP-zav" firstAttribute="leading" secondItem="0Ok-OF-LnL" secondAttribute="leading" id="1tP-GD-PJ0"/>
+                            <constraint firstItem="Qa7-49-VmY" firstAttribute="top" secondItem="mvJ-PP-zav" secondAttribute="bottom" constant="15" id="3Bi-KJ-1FG"/>
                             <constraint firstItem="qPw-ed-3lE" firstAttribute="trailing" secondItem="S0m-wz-lPk" secondAttribute="trailingMargin" id="3qj-jp-BRE"/>
                             <constraint firstItem="qPw-ed-3lE" firstAttribute="top" secondItem="Qa7-49-VmY" secondAttribute="bottom" constant="9" id="7Ye-iK-R53"/>
                             <constraint firstItem="mSo-Vo-P01" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qa7-49-VmY" secondAttribute="trailing" constant="8" symbolic="YES" id="9Bi-9j-djH"/>
@@ -605,14 +635,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Be6-iw-MM9">
-                        <barButtonItem key="backBarButtonItem" title=" " id="ZVk-sf-lce"/>
+                        <barButtonItem key="backBarButtonItem" id="ZVk-sf-lce"/>
                     </navigationItem>
                     <connections>
                         <outlet property="basketButton" destination="efk-ie-Tb1" id="tOY-JT-9xP"/>
                         <outlet property="basketTableView" destination="mvJ-PP-zav" id="Npe-Jk-m5A"/>
                         <outlet property="costLabel" destination="mSo-Vo-P01" id="9fC-65-iX7"/>
                         <outlet property="sumLabel" destination="Qa7-49-VmY" id="Y15-e2-Qkh"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="showMain" id="fcV-mB-oEh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHf-3R-yqf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -643,8 +672,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rsH-Eg-VBH"/>
-        <segue reference="fcV-mB-oEh"/>
+        <segue reference="pmS-C1-Hgy"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
