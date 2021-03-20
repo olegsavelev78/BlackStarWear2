@@ -57,10 +57,24 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
             item.price = product.price
             Persistance.shared.save(item: item)
         } else {
-            if array1[indexPath.row].count >= 1{
-                
-                Persistance.shared.countProduct()
+            for i in array1{
+                if Int(i.productOfferID) == Int(product.offers[indexPath.row].productOfferID)! {
+                    print("Добавляем количество товара")
+                    Persistance.shared.countProduct()
+                } else {
+                    item.productOfferID = Int(product.offers[indexPath.row].productOfferID)!
+                    item.name = product.name
+                    item.size = product.offers[indexPath.row].size
+                    item.colorName = product.colorName
+                    item.quantity = product.offers[indexPath.row].quantity
+                    item.mainImage = product.mainImage
+                    item.price = product.price
+                    print("Создаем новый товар")
+                    Persistance.shared.save(item: item)
+                    continue
+                }
             }
+            
         }
 
        

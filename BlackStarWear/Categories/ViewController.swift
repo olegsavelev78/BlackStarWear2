@@ -4,7 +4,6 @@
 //
 //  Created by MackBook on 12.07.2020.
 //  Copyright © 2020 Oleg. All rights reserved.
-//
 
 import UIKit
 

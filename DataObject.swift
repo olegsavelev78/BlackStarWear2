@@ -10,15 +10,6 @@ class ProductData: Object {
     @objc dynamic var price = ""
     @objc dynamic var count = 1
     @objc dynamic var productOfferID = 0
-    func getData(name: String, colorName: String, mainImage: String, size: String, price: String, productOfferID: Int) {
-            
-            self.name = name
-            self.colorName = colorName
-            self.mainImage = mainImage
-            self.size = size
-            self.price = price
-        self.productOfferID = productOfferID
-        }
 }
 
 class Persistance {

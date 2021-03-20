@@ -11,10 +11,9 @@ class CategoriesLoader {
                 var categories: [Category] = []
                 for (_, data) in jsonDict where data is NSDictionary{
                         if let category = Category(data: data as! NSDictionary){
-                            if !category.name.isEmpty {
+                            if !category.subcategories.isEmpty {
                                 categories.append(category)
                             }
-
                         }
                          completion(categories)
                     }

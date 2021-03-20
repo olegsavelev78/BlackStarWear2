@@ -38,14 +38,15 @@ class BasketViewController: UIViewController {
         self.basketButton.layer.cornerRadius = 20
         sumLabel.text = "Итого:"
         sumProducts()
-        
+        print(arrayProductInBasket)
         
         
     }
     func sumProducts(){
         var sum = 0
         for item in arrayProductInBasket{
-            sum += Int(Double(item.price) ?? 0)
+            
+            sum += Int(Double(item.price) ?? 0) * item.count
         }
         self.costLabel.text = "\(sum) ₽"
     }
@@ -61,11 +62,9 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = basketTableView.dequeueReusableCell(withIdentifier: "product") as! BasketTableViewCell
         
         let product = arrayProductInBasket[indexPath.row]
-        print(product.count)
         
         
         cell.initCell(item: product)
-        print(product)
 
         return cell
     }
