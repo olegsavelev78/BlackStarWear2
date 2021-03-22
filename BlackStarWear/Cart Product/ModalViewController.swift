@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class ModalViewController: UIViewController {
     var product = Product()
@@ -40,8 +39,7 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
         
     }
-    func nonduplicated(array: [ProductData], item1: ProductData){
-        var item2 = ProductData()
+    func nonduplicated(array: [ProductData], item1: ProductData, index: Int){
         var answer: Set<Int> = []
         for i in array{
             if !array.contains(where: { $0.productOfferID == item1.productOfferID }){
@@ -50,8 +48,10 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
                     print(i.productOfferID)
                     Persistance.shared.save(item: item1)
                 } else {
-                    
-                    Persistance.shared.changeCount(item: item1)
+//                    Persistance.shared.changeCount(item1: item1)
+                    Persistance.shared.remove(index: index)
+//                    item1.count += 1
+//                    Persistance.shared.save(item: item1)
                     
 //                    item2.count += 1
                     print("Есть дупликат")
@@ -72,7 +72,7 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
             array2.append(i)
         }
         if !array2.isEmpty {
-            nonduplicated(array: array2, item1: item) // Пытаемся найти одинаковые товары
+            nonduplicated(array: array2, item1: item, index: indexPath.row) // Пытаемся найти одинаковые товары
         } else {
             Persistance.shared.save(item: item) // Сохраняем первые данные в реалм
             print("Создаем первый реалм")
