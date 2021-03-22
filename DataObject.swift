@@ -32,6 +32,12 @@ class Persistance {
             realm.delete(item)
         }
     }
+    func changeCount(item: ProductData){
+//        let item = realm.objects(ProductData.self)
+        try! realm.write {
+            item.count += 1
+        }
+    }
     func countProduct(indexItem: Int){
         let item = realm.objects(ProductData.self)[indexItem]
         try! realm.write {

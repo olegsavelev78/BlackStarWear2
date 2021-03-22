@@ -16,9 +16,7 @@ class ModalViewController: UIViewController {
     @IBOutlet weak var sizeTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in arrayInBasket{
-            array2.append(i)
-        }
+        
         view.backgroundColor = UIColor.clear
                 view.isOpaque = false
         sizeTableView.delegate = self
@@ -42,24 +40,25 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
         
     }
-    func nonduplicated(array: [ProductData], id: Int) -> Int {
-        var count = 1
-            var answer: [Int] = []
-            var answer2: [ProductData] = []
-            for i in array{
-                if answer.contains(id){
-                    count += 1
-                    
+    func nonduplicated(array: [ProductData], item1: ProductData){
+        var item2 = ProductData()
+        var answer: Set<Int> = []
+        for i in array{
+            if !array.contains(where: { $0.productOfferID == item1.productOfferID }){
+                    answer.insert(item1.productOfferID)
+                    print("Нет дупликатов")
+                    print(i.productOfferID)
+                    Persistance.shared.save(item: item1)
                 } else {
-                    answer.append(id)
+                    
+                    Persistance.shared.changeCount(item: item1)
+                    
+//                    item2.count += 1
+                    print("Есть дупликат")
                 }
-    
             }
-            print(answer2.count)
-            return count
         }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         
         let item = ProductData()
         item.productOfferID = Int(product.offers[indexPath.row].productOfferID)!
@@ -69,10 +68,16 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
         item.quantity = product.offers[indexPath.row].quantity
         item.mainImage = product.mainImage
         item.price = product.price
-        item.count = nonduplicated(array: array2, id: Int(product.offers[indexPath.row].productOfferID)!)
-        print(item.count)
-        Persistance.shared.save(item: item)
-        print("+ товар")
+        for i in arrayInBasket{
+            array2.append(i)
+        }
+        if !array2.isEmpty {
+            nonduplicated(array: array2, item1: item) // Пытаемся найти одинаковые товары
+        } else {
+            Persistance.shared.save(item: item) // Сохраняем первые данные в реалм
+            print("Создаем первый реалм")
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
