@@ -31,10 +31,10 @@ class BasketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in arrayProductInBasket {
-            array2.append(i)
-        }
-        count = nonduplicated1(array: array2)
+//        for i in arrayProductInBasket {
+//            array2.append(i)
+//        }
+//        count = nonduplicated1(array: array2)
         
         navigationItem.title = "Корзина"
        
@@ -49,7 +49,7 @@ class BasketViewController: UIViewController {
     }
     func sumProducts(){
         var sum = 0
-        for item in count{
+        for item in arrayProductInBasket{
             
             sum += Int(Double(item.price) ?? 0) * item.count
         }
@@ -60,47 +60,49 @@ class BasketViewController: UIViewController {
 extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return count.count
+        return arrayProductInBasket.count
     }
-    func nonduplicated1(array: [ProductData]) -> [ProductData] {
-        var answer: [Int] = []
-        var answer2: [ProductData] = []
-        for i in array{
-            if answer.contains(i.productOfferID){
-                print("Найден дупликат \(i.name)")
-            } else {
-                answer.append(i.productOfferID)
-                answer2.append(i)
-            }
-            
-        }
-        print(answer2.count)
-        return answer2
-    }
-    func nonduplicated(array: [ProductData], index: Int) -> [ProductData] {
-        var answer: [Int] = []
-        var answer2: [ProductData] = []
-        for i in array{
-            if answer.contains(i.productOfferID){
-                i.count += 1
-                Persistance.shared.save(item: i)
-            } else {
-                answer.append(i.productOfferID)
-                answer2.append(i)
-            }
-            
-        }
-        print(answer2.count)
-        return answer2
-    }
+//    func nonduplicated1(array: [ProductData]) -> [ProductData] {
+//        var answer: [Int] = []
+//        var answer2: [ProductData] = []
+//        for i in array{
+//            if answer.contains(i.productOfferID){
+//                print("Найден дупликат \(i.name)")
+//            } else {
+//                answer.append(i.productOfferID)
+//                answer2.append(i)
+//            }
+//
+//        }
+//        print(answer2.count)
+//        return answer2
+//    }
+//    func nonduplicated(array: [ProductData]) -> [ProductData] {
+//        var answer: [Int] = []
+//        var answer2: [ProductData] = []
+//        for i in array{
+//            if answer.contains(i.productOfferID){
+//                answer2
+////                Persistance.shared.countProduct(indexItem: )
+//            } else {
+//                answer.append(i.productOfferID)
+//                answer2.append(i)
+//            }
+//
+//        }
+//        print(answer2.count)
+//        return answer2
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = basketTableView.dequeueReusableCell(withIdentifier: "product") as! BasketTableViewCell
-        count = nonduplicated(array: array2, index: indexPath.row)
+//        count = nonduplicated(array: array2)
         
-        cell.countLabel.text = "\(count[indexPath.row].count)"
-        let item = self.count[indexPath.row]
+        
+        let item = self.arrayProductInBasket[indexPath.row]
+
         let url = URL(string: GetUrl.shared.getImage() + item.mainImage)
+        cell.countLabel.text = "\(item.count)"
         cell.productImageView.kf.setImage(with: url)
         cell.nameLabel.text = item.name
         cell.sizeLabel.text = "Размер: \(item.size)"
@@ -117,24 +119,10 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if count[indexPath.row].count > 1{
-                
-                Persistance.shared.countMinusProduct(indexItem: indexPath.row)
-                count[indexPath.row].count -= 1
-                basketTableView.reloadData()
-                sumProducts()
-            } else {
-                
-                Persistance.shared.remove(index: indexPath.row)
-                count.remove(at: indexPath.row)
-                basketTableView.deleteRows(at: [indexPath], with: .left)
-                
-                basketTableView.reloadData()
-                
-                sumProducts()
-            }
-            
-            
+            Persistance.shared.remove(index: indexPath.row)
+            basketTableView.deleteRows(at: [indexPath], with: .left)
+            basketTableView.reloadData()
+            sumProducts()
             if self.count.isEmpty {
                 self.basketButton.setTitle("На главную", for: .normal)
             }
