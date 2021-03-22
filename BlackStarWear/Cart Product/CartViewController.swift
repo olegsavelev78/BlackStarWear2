@@ -35,6 +35,10 @@ class CartViewController: UIViewController {
             let productSelect = product
             destination.product = productSelect
         }
+        if segue.identifier == "showBasket", let destination = segue.destination as? BasketViewController {
+            let productSelect = product
+            destination.product = productSelect
+        }
     }
     @IBOutlet weak var descriptionTextView: UITextView!
     

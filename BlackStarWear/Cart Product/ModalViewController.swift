@@ -11,20 +11,15 @@ import RealmSwift
 
 class ModalViewController: UIViewController {
     var product = Product()
-    
+    var array2 = [Product]()
     @IBOutlet weak var sizeTableView: UITableView!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
                 view.isOpaque = false
         sizeTableView.delegate = self
         sizeTableView.dataSource = self
-        
     }
-
-
 }
 
 extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
@@ -46,42 +41,16 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let item = ProductData()
-        let array1 = Persistance.shared.getItems()
-        if array1.isEmpty {
-            item.productOfferID = Int(product.offers[indexPath.row].productOfferID)!
-            item.name = product.name
-            item.size = product.offers[indexPath.row].size
-            item.colorName = product.colorName
-            item.quantity = product.offers[indexPath.row].quantity
-            item.mainImage = product.mainImage
-            item.price = product.price
-            Persistance.shared.save(item: item)
-        } else {
-            for i in array1{
-                if Int(i.productOfferID) == Int(product.offers[indexPath.row].productOfferID)! {
-                    print("Добавляем количество товара")
-                    Persistance.shared.countProduct()
-                } else {
-                    item.productOfferID = Int(product.offers[indexPath.row].productOfferID)!
-                    item.name = product.name
-                    item.size = product.offers[indexPath.row].size
-                    item.colorName = product.colorName
-                    item.quantity = product.offers[indexPath.row].quantity
-                    item.mainImage = product.mainImage
-                    item.price = product.price
-                    print("Создаем новый товар")
-                    Persistance.shared.save(item: item)
-                    continue
-                }
-            }
-            
-        }
-
-       
-        
+        item.productOfferID = Int(product.offers[indexPath.row].productOfferID)!
+        item.name = product.name
+        item.size = product.offers[indexPath.row].size
+        item.colorName = product.colorName
+        item.quantity = product.offers[indexPath.row].quantity
+        item.mainImage = product.mainImage
+        item.price = product.price
+        Persistance.shared.save(item: item)
+        print("+ товар")
         dismiss(animated: true, completion: nil)
     }
-    
-    
     
 }

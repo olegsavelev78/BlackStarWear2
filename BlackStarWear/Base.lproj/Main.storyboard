@@ -476,9 +476,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="mvJ-PP-zav">
                                 <rect key="frame" x="0.0" y="88" width="414" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="667" id="tvs-5O-oYg"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="product" id="sfz-MR-KSI" customClass="BasketTableViewCell" customModule="BlackStarWear" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="132"/>
@@ -490,7 +487,6 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UQ6-8L-upJ">
                                                     <rect key="frame" x="25" y="16" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="7Ld-ng-TaR"/>
                                                         <constraint firstAttribute="width" secondItem="UQ6-8L-upJ" secondAttribute="height" multiplier="1:1" id="dlL-By-NEX"/>
                                                     </constraints>
                                                 </imageView>
@@ -623,7 +619,6 @@
                             <constraint firstItem="Qa7-49-VmY" firstAttribute="top" secondItem="mvJ-PP-zav" secondAttribute="bottom" constant="15" id="3Bi-KJ-1FG"/>
                             <constraint firstItem="qPw-ed-3lE" firstAttribute="trailing" secondItem="S0m-wz-lPk" secondAttribute="trailingMargin" id="3qj-jp-BRE"/>
                             <constraint firstItem="qPw-ed-3lE" firstAttribute="top" secondItem="Qa7-49-VmY" secondAttribute="bottom" constant="9" id="7Ye-iK-R53"/>
-                            <constraint firstItem="mSo-Vo-P01" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qa7-49-VmY" secondAttribute="trailing" constant="8" symbolic="YES" id="9Bi-9j-djH"/>
                             <constraint firstItem="0Ok-OF-LnL" firstAttribute="trailing" secondItem="mSo-Vo-P01" secondAttribute="trailing" constant="20" id="CHk-Hc-82h"/>
                             <constraint firstItem="efk-ie-Tb1" firstAttribute="top" secondItem="qPw-ed-3lE" secondAttribute="bottom" constant="20" id="ChU-5j-1fp"/>
                             <constraint firstItem="mvJ-PP-zav" firstAttribute="top" secondItem="0Ok-OF-LnL" secondAttribute="top" id="H0i-8a-LjA"/>
@@ -632,6 +627,7 @@
                             <constraint firstItem="mSo-Vo-P01" firstAttribute="baseline" secondItem="Qa7-49-VmY" secondAttribute="firstBaseline" id="T6Y-wI-1po"/>
                             <constraint firstItem="0Ok-OF-LnL" firstAttribute="trailing" secondItem="efk-ie-Tb1" secondAttribute="trailing" constant="20" id="irt-R6-Bnk"/>
                             <constraint firstItem="0Ok-OF-LnL" firstAttribute="trailing" secondItem="mvJ-PP-zav" secondAttribute="trailing" id="lHj-QM-KnG"/>
+                            <constraint firstItem="mSo-Vo-P01" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qa7-49-VmY" secondAttribute="trailing" constant="20" id="skz-LR-8Wj"/>
                             <constraint firstItem="efk-ie-Tb1" firstAttribute="bottom" secondItem="0Ok-OF-LnL" secondAttribute="bottom" id="sxZ-kG-vnX"/>
                         </constraints>
                     </view>
@@ -673,7 +669,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pmS-C1-Hgy"/>
+        <segue reference="rsH-Eg-VBH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>

@@ -8,8 +8,8 @@ class ProductData: Object {
     @objc dynamic var quantity = ""
     @objc dynamic var mainImage = ""
     @objc dynamic var price = ""
-    @objc dynamic var count = 1
     @objc dynamic var productOfferID = 0
+    @objc dynamic var count = 1
 }
 
 class Persistance {
@@ -32,14 +32,17 @@ class Persistance {
             realm.delete(item)
         }
     }
-    func countProduct(){
-        let item = realm.objects(ProductData.self).first
+    func countProduct(indexItem: Int){
+        let item = realm.objects(ProductData.self)[indexItem]
         try! realm.write {
-            item?.count += 1
+            item.count += 1
         }
-            
-        
     }
-    
+    func countMinusProduct(indexItem: Int){
+        let item = realm.objects(ProductData.self)[indexItem]
+        try! realm.write {
+            item.count -= 1
+        }
+    }
     
 }

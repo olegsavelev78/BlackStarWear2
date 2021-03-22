@@ -9,13 +9,13 @@
 import UIKit
 
 class BasketTableViewCell: UITableViewCell {
+    var arrayProductInBasket = Persistance.shared.getItems()
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var countLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,7 +29,16 @@ class BasketTableViewCell: UITableViewCell {
         sizeLabel.text = "Размер: \(item.size)"
         colorLabel.text = "Цвет: \(item.colorName)"
         costLabel.text = "\(Int(Double(item.price) ?? 0)) ₽"
-        countLabel.text = "\(item.count) шт"
+
+        
+//        for i in arrayProductInBasket{
+//            if (offerID == i.productOfferID && addetItem != i.productOfferID) {
+//                Persistance.shared.countProduct()
+//            }
+//            offerID = i.productOfferID
+//        }
+//        countLabel.text = "\(item.count) шт"
+//        if item.productOfferID = arrayProductInBasket
     }
 
     
