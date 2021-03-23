@@ -31,11 +31,6 @@ class BasketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        for i in arrayProductInBasket {
-//            array2.append(i)
-//        }
-//        count = nonduplicated1(array: array2)
-        
         navigationItem.title = "Корзина"
        
         self.basketButton.setTitle("На главную", for: .normal)
@@ -62,55 +57,11 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
         
         return arrayProductInBasket.count
     }
-//    func nonduplicated1(array: [ProductData]) -> [ProductData] {
-//        var answer: [Int] = []
-//        var answer2: [ProductData] = []
-//        for i in array{
-//            if answer.contains(i.productOfferID){
-//                print("Найден дупликат \(i.name)")
-//            } else {
-//                answer.append(i.productOfferID)
-//                answer2.append(i)
-//            }
-//
-//        }
-//        print(answer2.count)
-//        return answer2
-//    }
-//    func nonduplicated(array: [ProductData]) -> [ProductData] {
-//        var answer: [Int] = []
-//        var answer2: [ProductData] = []
-//        for i in array{
-//            if answer.contains(i.productOfferID){
-//                answer2
-////                Persistance.shared.countProduct(indexItem: )
-//            } else {
-//                answer.append(i.productOfferID)
-//                answer2.append(i)
-//            }
-//
-//        }
-//        print(answer2.count)
-//        return answer2
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = basketTableView.dequeueReusableCell(withIdentifier: "product") as! BasketTableViewCell
-//        count = nonduplicated(array: array2)
-        
-        
         let item = self.arrayProductInBasket[indexPath.row]
-
-        let url = URL(string: GetUrl.shared.getImage() + item.mainImage)
-        cell.countLabel.text = "\(item.count)"
-        cell.productImageView.kf.setImage(with: url)
-        cell.nameLabel.text = item.name
-        cell.sizeLabel.text = "Размер: \(item.size)"
-        cell.colorLabel.text = "Цвет: \(item.colorName)"
-        cell.costLabel.text = "\(Int(Double(item.price) ?? 0)) ₽"
-
-        
-//        cell.initCell(item: item)
+        cell.initCell(item: item)
         
         return cell
     }
@@ -118,8 +69,9 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
         .delete
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let item = self.arrayProductInBasket[indexPath.row]
         if editingStyle == .delete {
-            Persistance.shared.remove(index: indexPath.row)
+            Persistance.shared.remove(item: item)
             basketTableView.deleteRows(at: [indexPath], with: .left)
             basketTableView.reloadData()
             sumProducts()

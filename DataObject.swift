@@ -17,42 +17,39 @@ class Persistance {
     let realm = try! Realm()
     
     func save(item: ProductData){
-        try! realm.write {
-            realm.add(item)
-        }
+        let items = realm.objects(ProductData.self)
+        if !items.isEmpty{
+            if let foundItem = items.first(where: { $0.productOfferID == item.productOfferID}){
+                try! realm.write {
+                    foundItem.count += 1
+                }
+                print("меняем количество")
+            } else {
+                try! realm.write {
+                    realm.add(item)
+                }
+                print("Добавляем новый товар")
+            }
+
+            } else {
+                try! realm.write {
+                    realm.add(item)
+                    print("Добавляем новый товар")
+                }
+            }
+        
+        
     }
     
     func getItems() -> Results<ProductData>{
         realm.objects(ProductData.self)
     }
     
-    func remove(index: Int) {
-        let item = realm.objects(ProductData.self)[index]
-        try! realm.write {
-            realm.delete(item)
+    func remove(item: ProductData) {
+ 
+            try! realm.write {
+                realm.delete(item)
+            }
         }
-    }
-    func changeCount(item1: ProductData){
-        let items = realm.objects(ProductData.self)
-        var arr = items.count
-        print(arr)
-        try! realm.write({ () -> Void in
-            item1.count += 1
-            print("меняем количество")
-        })
-
-    }
-    func countProduct(indexItem: Int){
-        let item = realm.objects(ProductData.self)[indexItem]
-        try! realm.write {
-            item.count += 1
-        }
-    }
-    func countMinusProduct(indexItem: Int){
-        let item = realm.objects(ProductData.self)[indexItem]
-        try! realm.write {
-            item.count -= 1
-        }
-    }
     
 }

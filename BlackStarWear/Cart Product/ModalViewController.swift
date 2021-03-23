@@ -39,25 +39,21 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
         
     }
-    func nonduplicated(array: [ProductData], item1: ProductData, index: Int){
-        var answer: Set<Int> = []
-        for i in array{
-            if !array.contains(where: { $0.productOfferID == item1.productOfferID }){
-                    answer.insert(item1.productOfferID)
-                    print("Нет дупликатов")
-                    print(i.productOfferID)
-                    Persistance.shared.save(item: item1)
-                } else {
-//                    Persistance.shared.changeCount(item1: item1)
-                    Persistance.shared.remove(index: index)
-//                    item1.count += 1
+//    func nonduplicated(array: [ProductData], item1: ProductData, index: Int){
+//        var answer: Set<Int> = []
+//        for i in array{
+//            if !array.contains(where: { $0.productOfferID == item1.productOfferID }){
+//                    answer.insert(item1.productOfferID)
+//                    print("Нет дупликатов")
+//                    print(i.productOfferID)
 //                    Persistance.shared.save(item: item1)
-                    
-//                    item2.count += 1
-                    print("Есть дупликат")
-                }
-            }
-        }
+//                } else {
+////                    Persistance.shared.changeCount(item1: item1)
+//                    Persistance.shared.remove(index: index)
+//                    print("Есть дупликат")
+//                }
+//            }
+//        }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let item = ProductData()
@@ -68,16 +64,11 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
         item.quantity = product.offers[indexPath.row].quantity
         item.mainImage = product.mainImage
         item.price = product.price
-        for i in arrayInBasket{
-            array2.append(i)
-        }
-        if !array2.isEmpty {
-            nonduplicated(array: array2, item1: item, index: indexPath.row) // Пытаемся найти одинаковые товары
-        } else {
-            Persistance.shared.save(item: item) // Сохраняем первые данные в реалм
-            print("Создаем первый реалм")
-        }
-        
+//        for i in arrayInBasket{
+//            array2.append(i)
+//        }
+ 
+        Persistance.shared.save(item: item)
         dismiss(animated: true, completion: nil)
     }
     
