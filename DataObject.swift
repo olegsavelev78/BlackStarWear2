@@ -46,10 +46,16 @@ class Persistance {
     }
     
     func remove(item: ProductData) {
- 
-            try! realm.write {
-                realm.delete(item)
-            }
+        try! realm.write {
+            item.count -= 1
+            print("Удаляем товар")
+           }
+        
         }
+    func removeAl(item: ProductData) {
+        try! realm.write {
+            realm.delete(item)
+        }
+    }
     
 }

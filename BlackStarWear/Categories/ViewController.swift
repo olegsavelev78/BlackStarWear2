@@ -11,14 +11,15 @@ class ViewController: UIViewController {
     var categories: [Category] = []
     var subcategories: [Subcategory] = []
     var tableIndex = 0
-    var categoryId = 0
+    var categoryId: [String] = []
+    var subCategoryId = 0
     var titleName = ""
     
     @IBOutlet weak var tableView: UITableView!
     @IBAction func basketButton(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "BasketController")
         self.navigationController?.pushViewController(vc!, animated: true)
-        
+   
     }
     @IBOutlet weak var backButton: UIButton!
     
@@ -40,15 +41,19 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
 
         
-        CategoriesLoader().loadCategories { categories in
+        CategoriesLoader().loadCategories{ categories, categoryId  in
             self.categories = categories
             self.tableView.reloadData()
+            self.categoryId = categoryId
+            
+            print(categoryId)
         }
         if tableIndex == 0 {
             backButton.isHidden = true
             backButton.isEnabled = false
         }
         backButton.setTitle("Назад", for: .normal)
+        
     }
 
 }
@@ -70,39 +75,39 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             return cell
         } else {
             if subcategories.isEmpty{
-                
-            } else{
-                cell.initCell2(item: subcategories[indexPath.row]) // инициализация ячейки Подкатегорий
-            }
-            
+                            
+                        } else{
+            cell.initCell2(item: subcategories[indexPath.row]) // инициализация ячейки Подкатегорий
+                        }
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        if tableIndex == 0 {
+        
+        if tableIndex == 0 && !categories[indexPath.row].subcategories.isEmpty {
             tableIndex = 1
             navigationItem.title = categories[indexPath.row].name
             subcategories = categories[indexPath.row].subcategories
             backButton.isHidden = false
             backButton.isEnabled = true
+            self.tableView.reloadData()
+            print("переход на подкатегории")
+        } else if tableIndex == 0 && categories[indexPath.row].subcategories.isEmpty {
+            let vc = storyboard?.instantiateViewController(identifier: "Products") as! ProductViewController
+            vc.itemID = Int(categoryId[indexPath.row])!
+            vc.titleName = categories[indexPath.row].name
+            self.navigationController?.pushViewController(vc, animated: true)
+            print("переход на продукты без подкатегорий")
         } else {
             let product = subcategories[indexPath.row]
-            titleName = subcategories[indexPath.row].name
-            self.categoryId = product.id
-            performSegue(withIdentifier: "ShowProducts", sender: categoryId)
+            let vc = storyboard?.instantiateViewController(identifier: "Products") as! ProductViewController
+            vc.itemID = product.id
+            vc.titleName = subcategories[indexPath.row].name
+            self.navigationController?.pushViewController(vc, animated: true)
+            print("переход на продукты")
         }
-        self.tableView.reloadData()
+        
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowProducts",
-           let destination = segue.destination as? ProductViewController,
-           let id = sender as? Int {
-            destination.titleName = titleName
-            destination.itemID = id
-            tableIndex = 1
-        }
-    }
 }

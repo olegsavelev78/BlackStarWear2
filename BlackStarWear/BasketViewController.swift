@@ -17,7 +17,8 @@ class BasketViewController: UIViewController {
     @IBOutlet weak var basketButton: UIButton!
     @IBAction func basketButtonAction(_ sender: Any) {
         if arrayProductInBasket.isEmpty {
-            performSegue(withIdentifier: "showMain", sender: self)
+            let vc = storyboard?.instantiateViewController(identifier: "Category") as! ViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     var array2: [ProductData] = []
@@ -71,8 +72,14 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let item = self.arrayProductInBasket[indexPath.row]
         if editingStyle == .delete {
-            Persistance.shared.remove(item: item)
-            basketTableView.deleteRows(at: [indexPath], with: .left)
+            if item.count > 1{
+                Persistance.shared.remove(item: item)
+
+            } else {
+                Persistance.shared.removeAl(item: item)
+                basketTableView.deleteRows(at: [indexPath], with: .left)
+                
+            }
             basketTableView.reloadData()
             sumProducts()
             if self.count.isEmpty {
