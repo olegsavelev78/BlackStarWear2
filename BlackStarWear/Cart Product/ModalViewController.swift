@@ -12,12 +12,18 @@ class ModalViewController: UIViewController {
     var product = Product()
     var array2 = [ProductData]()
     var arrayInBasket = Persistance.shared.getItems()
+    @IBOutlet weak var sizeStackView: UIStackView!
     @IBOutlet weak var sizeTableView: UITableView!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBAction func cancelActionButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        cancelButton.setTitle("ОТМЕНА", for: .normal)
+        cancelButton.layer.cornerRadius = 20
         view.backgroundColor = UIColor.clear
-                view.isOpaque = false
+        view.isOpaque = false
         sizeTableView.delegate = self
         sizeTableView.dataSource = self
     }
@@ -33,27 +39,12 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellOffers", for: indexPath) as! Size2TableViewCell
-        
         cell.sizeLabel.text = "\(product.offers[indexPath.row].size) RUS"
         cell.quantityLabel.text = "\(product.offers[indexPath.row].quantity) шт"
         return cell
         
     }
-//    func nonduplicated(array: [ProductData], item1: ProductData, index: Int){
-//        var answer: Set<Int> = []
-//        for i in array{
-//            if !array.contains(where: { $0.productOfferID == item1.productOfferID }){
-//                    answer.insert(item1.productOfferID)
-//                    print("Нет дупликатов")
-//                    print(i.productOfferID)
-//                    Persistance.shared.save(item: item1)
-//                } else {
-////                    Persistance.shared.changeCount(item1: item1)
-//                    Persistance.shared.remove(index: index)
-//                    print("Есть дупликат")
-//                }
-//            }
-//        }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let item = ProductData()
@@ -64,10 +55,6 @@ extension ModalViewController: UITableViewDelegate, UITableViewDataSource{
         item.quantity = product.offers[indexPath.row].quantity
         item.mainImage = product.mainImage
         item.price = product.price
-//        for i in arrayInBasket{
-//            array2.append(i)
-//        }
- 
         Persistance.shared.save(item: item)
         dismiss(animated: true, completion: nil)
     }

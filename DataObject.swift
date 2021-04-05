@@ -20,37 +20,32 @@ class Persistance {
         let items = realm.objects(ProductData.self)
         if !items.isEmpty{
             if let foundItem = items.first(where: { $0.productOfferID == item.productOfferID}){
+                // Меняем количество
                 try! realm.write {
                     foundItem.count += 1
                 }
-                print("меняем количество")
             } else {
+                // Добавляем новый товар
                 try! realm.write {
                     realm.add(item)
                 }
-                print("Добавляем новый товар")
             }
-
             } else {
+                // Добавляем новый товар
                 try! realm.write {
                     realm.add(item)
-                    print("Добавляем новый товар")
                 }
             }
-        
-        
     }
     
     func getItems() -> Results<ProductData>{
         realm.objects(ProductData.self)
     }
     
-    func remove(item: ProductData) {
+    func remove(item: ProductData) { // Удаляем товар
         try! realm.write {
             item.count -= 1
-            print("Удаляем товар")
            }
-        
         }
     func removeAl(item: ProductData) {
         try! realm.write {

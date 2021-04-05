@@ -21,14 +21,11 @@ class BasketViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    var array2: [ProductData] = []
     var arrayProductInBasket = Persistance.shared.getItems(){
         didSet{
             basketTableView.reloadData()
         }
     }
-    var count: [ProductData] = []
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +43,6 @@ class BasketViewController: UIViewController {
     func sumProducts(){
         var sum = 0
         for item in arrayProductInBasket{
-            
             sum += Int(Double(item.price) ?? 0) * item.count
         }
         self.costLabel.text = "\(sum) ₽"
@@ -55,7 +51,6 @@ class BasketViewController: UIViewController {
 }
 extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return arrayProductInBasket.count
     }
     
@@ -74,15 +69,13 @@ extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             if item.count > 1{
                 Persistance.shared.remove(item: item)
-
             } else {
                 Persistance.shared.removeAl(item: item)
                 basketTableView.deleteRows(at: [indexPath], with: .left)
-                
             }
             basketTableView.reloadData()
             sumProducts()
-            if self.count.isEmpty {
+            if self.arrayProductInBasket.isEmpty {
                 self.basketButton.setTitle("На главную", for: .normal)
             }
         }

@@ -28,32 +28,26 @@ class ViewController: UIViewController {
         self.backButton.isEnabled = false
         subcategories.removeAll()
         tableIndex = 0
-        tableView.reloadData()
-        
+        tableView.reloadData()  
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        
-        CategoriesLoader().loadCategories{ categories, categoryId  in
-            self.categories = categories
-            self.tableView.reloadData()
-            self.categoryId = categoryId
-            
-            print(categoryId)
-        }
         if tableIndex == 0 {
             backButton.isHidden = true
             backButton.isEnabled = false
         }
+        tableView.tableFooterView = UIView()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        CategoriesLoader().loadCategories{ categories, categoryId  in
+            self.categories = categories
+            self.tableView.reloadData()
+            self.categoryId = categoryId
+        }
         backButton.setTitle("Назад", for: .normal)
-        
     }
 
 }
@@ -74,38 +68,34 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             cell.initCell(item: categories[indexPath.row]) // инициализация ячейки Категорий
             return cell
         } else {
-            if subcategories.isEmpty{
-                            
-                        } else{
-            cell.initCell2(item: subcategories[indexPath.row]) // инициализация ячейки Подкатегорий
-                        }
+            if !subcategories.isEmpty{
+                cell.initCell2(item: subcategories[indexPath.row]) // инициализация ячейки Подкатегорий
+            }
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if tableIndex == 0 && !categories[indexPath.row].subcategories.isEmpty {
+        if tableIndex == 0 && !categories[indexPath.row].subcategories.isEmpty { // Переход на подкатегории
             tableIndex = 1
             navigationItem.title = categories[indexPath.row].name
             subcategories = categories[indexPath.row].subcategories
             backButton.isHidden = false
             backButton.isEnabled = true
             self.tableView.reloadData()
-            print("переход на подкатегории")
-        } else if tableIndex == 0 && categories[indexPath.row].subcategories.isEmpty {
+        } else if tableIndex == 0 && categories[indexPath.row].subcategories.isEmpty { // Переход на продукты без подкатегорий
+            tableIndex = 0
             let vc = storyboard?.instantiateViewController(identifier: "Products") as! ProductViewController
             vc.itemID = Int(categoryId[indexPath.row])!
             vc.titleName = categories[indexPath.row].name
             self.navigationController?.pushViewController(vc, animated: true)
-            print("переход на продукты без подкатегорий")
-        } else {
+        } else {    // Переход на продукты
             let product = subcategories[indexPath.row]
             let vc = storyboard?.instantiateViewController(identifier: "Products") as! ProductViewController
             vc.itemID = product.id
             vc.titleName = subcategories[indexPath.row].name
             self.navigationController?.pushViewController(vc, animated: true)
-            print("переход на продукты")
         }
         
     }

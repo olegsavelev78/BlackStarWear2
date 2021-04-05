@@ -1,10 +1,5 @@
 import Foundation
 
-//struct CategoryId {
-//    let id: String
-//    let category: [Category]
-//}
-
 class Category{
     let name: String
     let sortOrder: Int

@@ -20,8 +20,6 @@ class BasketTableViewCell: UITableViewCell {
         // Initialization code
     }
     func initCell(item: ProductData){
-        
-        
         let url = URL(string: GetUrl.shared.getImage() + item.mainImage)
         self.productImageView.kf.setImage(with: url)
         nameLabel.text = item.name
@@ -31,7 +29,4 @@ class BasketTableViewCell: UITableViewCell {
         countLabel.text = "\(item.count) шт"
         
     }
-
-    
-
 }

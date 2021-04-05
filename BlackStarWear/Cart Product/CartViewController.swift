@@ -11,15 +11,10 @@ import Kingfisher
 
 class CartViewController: UIViewController {
     var product = Product()
-    var tableViewOffers = UITableView(frame: CGRect(x: 0, y: 50, width: 200, height: 170))
-    var selectRow = -1
-
     
     @IBAction func basketButton(_ sender: Any) {
         performSegue(withIdentifier: "showBasket", sender: self)
-        
     }
-    
     @IBOutlet weak var imageCollectoinView: UICollectionView!
     @IBOutlet weak var imgPageControl: UIPageControl!
     @IBOutlet weak var nameLabel: UILabel!

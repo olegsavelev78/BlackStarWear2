@@ -16,8 +16,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameProduct: UILabel!
     @IBOutlet weak var buyLabel: UILabel!
     
-    
-    
     func initCollectionCell(item: Product){
         let url = URL(string: GetUrl.shared.getImage() + item.mainImage)
         mainImageProduct.kf.setImage(with: url)

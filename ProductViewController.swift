@@ -6,15 +6,13 @@ class ProductViewController: UIViewController {
     var products: [Product] = []
     var productIndex = 0
     @IBOutlet weak var collectionViewProduct: UICollectionView!
-    
     @IBAction func basketButton(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(identifier: "BasketController")
-        self.navigationController?.pushViewController(vc!, animated: true)
+        let vc = storyboard?.instantiateViewController(identifier: "BasketController") as! BasketViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = .black
-        print(itemID)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -23,7 +21,6 @@ class ProductViewController: UIViewController {
         ProductsLoader().loadProducts(id: itemID) { products in
             self.products = products
             self.collectionViewProduct.reloadData()
-            
         }
     }
 }
@@ -47,14 +44,9 @@ extension ProductViewController: UICollectionViewDelegateFlowLayout, UICollectio
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.productIndex = indexPath.row
-        
-        performSegue(withIdentifier: "ShowCart", sender: self)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowCart", let destination = segue.destination as? CartViewController {
-            let productSelect = products[self.productIndex]
-            destination.product = productSelect
-        }
-        navigationItem.backBarButtonItem?.title = ""
+        let vc = storyboard?.instantiateViewController(identifier: "CartController") as! CartViewController
+        let productSelect = products[self.productIndex]
+        vc.product = productSelect
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

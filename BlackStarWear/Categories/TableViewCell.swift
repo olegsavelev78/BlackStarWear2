@@ -10,8 +10,6 @@ import UIKit
 import Kingfisher
 
 class CategoryCell: UITableViewCell {
-    
-
     @IBOutlet weak var imageCell: UIImageView!
     
     @IBOutlet weak var textLabelCell: UILabel!
